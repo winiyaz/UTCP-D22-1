@@ -5,6 +5,7 @@ from turtle import Screen
 
 from ball import Ball
 from padl import Padl
+from score import ScoreB
 
 # Screen setup
 scr = Screen()
@@ -16,6 +17,7 @@ scr.tracer(0)
 r_padl = Padl((450, 0))
 l_padl = Padl((-450, 0))
 ball = Ball()
+scob = ScoreB()
 
 scr.listen()
 scr.onkey(r_padl.go_up, "Up")
@@ -36,6 +38,14 @@ while game_is_on:
 	# Detect collission with right paddle
 	if ball.distance(r_padl) < 50 and ball.xcor() > 340 or ball.distance(l_padl) < 50 and ball.xcor() < -340:
 		ball.bounce_x()
+
+	# Detect when right padle misses
+	if ball.xcor() > 500:
+		ball.reset_position()
+
+	# Detect Left Sided miss
+	if ball.xcor() < -500:
+		ball.reset_position()
 
 # -- Exit on Click
 scr.exitonclick()
