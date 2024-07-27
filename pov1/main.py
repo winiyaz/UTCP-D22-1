@@ -27,7 +27,7 @@ scr.onkey(l_padl.go_do, "s")
 
 game_is_on = True
 while game_is_on:
-	time.sleep(0.1)
+	time.sleep(ball.mosp)
 	scr.update()
 	ball.move()
 
