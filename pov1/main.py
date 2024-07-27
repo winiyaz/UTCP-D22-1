@@ -1,9 +1,10 @@
 # Pong Game
 
-from turtle import Screen, Turtle
-from padl import Padl
-from ball import Ball
 import time
+from turtle import Screen
+
+from ball import Ball
+from padl import Padl
 
 # Screen setup
 scr = Screen()
@@ -27,6 +28,14 @@ while game_is_on:
 	time.sleep(0.1)
 	scr.update()
 	ball.move()
+
+	# Detect Collision with the wall
+	if ball.ycor() > 380 or ball.ycor() < -380:
+		ball.bounce_y()
+
+	# Detect collission with right paddle
+	if ball.distance(r_padl) < 50 and ball.xcor() > 340 or ball.distance(l_padl) < 50 and ball.xcor() < -340:
+		ball.bounce_x()
 
 # -- Exit on Click
 scr.exitonclick()
