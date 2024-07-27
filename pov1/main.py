@@ -7,6 +7,7 @@ scr = Screen()
 scr.bgcolor("#020617")
 scr.setup(1000, 800)
 scr.title("SitOnFace")
+scr.tracer(0)
 
 # Setting up the padle
 padle = Turtle()
@@ -30,6 +31,10 @@ def go_do():
 scr.listen()
 scr.onkey(go_up, "Up")
 scr.onkey(go_do, "Down")
+
+game_is_on = True
+while game_is_on:
+	scr.update()
 
 # -- Exit on Click
 scr.exitonclick()
