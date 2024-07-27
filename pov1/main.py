@@ -2,6 +2,8 @@
 
 from turtle import Screen, Turtle
 from padl import Padl
+from ball import Ball
+import time
 
 # Screen setup
 scr = Screen()
@@ -12,6 +14,7 @@ scr.tracer(0)
 
 r_padl = Padl((450, 0))
 l_padl = Padl((-450, 0))
+ball = Ball()
 
 scr.listen()
 scr.onkey(r_padl.go_up, "Up")
@@ -21,7 +24,9 @@ scr.onkey(l_padl.go_do, "s")
 
 game_is_on = True
 while game_is_on:
+	time.sleep(0.1)
 	scr.update()
+	ball.move()
 
 # -- Exit on Click
 scr.exitonclick()
